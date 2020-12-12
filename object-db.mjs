@@ -58,7 +58,6 @@ export class db{
     async create(key,value){
             return new Promise(async(resolved, rejected) => {
                 const rejectReason = []
-                console.log(Buffer.byteLength(JSON.stringify(this.data)))
                 if(Buffer.byteLength(JSON.stringify(this.data))/1024 > 1024){
                     rejectReason.push(`Datastore size limit exceding 1GB. Cannot create.`)
                     rejected(rejectReason)
@@ -92,23 +91,46 @@ export class db{
                 }
                 else{
                     this.data[key] = value;
-                    let copy = this.data
-                    console.log(this.data)
-                    await fs.writeFile(this.dbPath,JSON.stringify(copy),function(err){
+                    await fs.writeFile(this.dbPath,JSON.stringify(this.data),function(err){
                         if (err) {
                             console.log(err)
                             rejected(err)
+                            return
                         }
-                        else{
-                            console.log(this.data)
-                            let a = `Space Availabe:${(Buffer.byteLength(JSON.stringify(this.data))/1024/1024)}MB/1024MB`
-                            resolved(a)
-                        }
-                    })
-                    console.log(this.data)
+                    });
+                    let a = `Space Availabe : ${(Buffer.byteLength(JSON.stringify(this.data))/1024/1024).toFixed(2)}MB/1024MB`
+                    resolved(a)
                 }
 
         }
     );
+}
+async read(key){
+    return new Promise((resolved,rejected)=>{
+        if(!Object.keys(this.data).includes(key)){
+            rejected('Key does not exists')
+        }
+        else{
+            resolved(this.data[key])
+        }
+    });
+}
+async delete(key){
+    return new Promise(async(resolved,rejected)=>{
+        if(!Object.keys(this.data).includes(key)){
+            rejected('Key does not exists')
+        }
+        else{
+            delete this.data[key]
+            await fs.writeFile(this.dbPath,JSON.stringify(this.data),function(err){
+                if (err) {
+                    console.log(err)
+                    rejected(err)
+                    return
+                }
+            });
+            resolved('deleted')
+        }
+    });
 }
 }
