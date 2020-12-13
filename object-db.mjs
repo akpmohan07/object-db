@@ -64,7 +64,8 @@ export class db {
                 }
 
             } catch (error) {
-                rejected(error)
+                console.log(error)
+                rejected(false)
             }
         });
 

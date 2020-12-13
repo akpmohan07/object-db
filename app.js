@@ -12,7 +12,6 @@ const startPromise = new Promise(async (resolve, reject) => {
             resolve(true)
         })
         .catch((error) => {
-            console.log(error)
             reject(false)
         })
 });
@@ -60,3 +59,4 @@ startPromise.then(async (res) => {
     }
 
 })
+.catch((error)=>{})
