@@ -38,12 +38,10 @@ First check node version.
 ## Solution
 
  - Console Application to do CRD operation, Satisfying the funcational and Non-Functional requirements.
-   
-  
- - I chose **Node.js** for development, because I am currently learing  
-   it.
- - App will store datas in **JSON** file.I chose the JSON as storing   
-   format because it is easy to  access Key-Value Datas.
+ 
+ - I chose **Node.js** for development, because I am currently learing it.
+ 
+ - App will store datas in **JSON** file.I chose the JSON as storing format because it is easy to  access Key-Value Datas.
 
 ## Application Flow
 ![flow](https://raw.githubusercontent.com/akpmohan07/object-db/main/Readme%20Files/flow_chart.png?raw=)
