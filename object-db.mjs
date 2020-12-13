@@ -1,15 +1,10 @@
 import * as fs from 'fs'
-import {
-    resolve
-} from 'path';
-import {
-    error
-} from 'console';
 export class db {
     constructor() {
         this.data = {}
         this.dbPath = ''
     }
+
     /**
      * @param {string} path If path is given in Argument
      * @param {undefined} path If path is not given in Argument
@@ -20,7 +15,7 @@ export class db {
             if (path) {
                 console.log('\n---Instantiating DB instance in given Path---\n')
             } else {
-                //If path isnot given Starting db in current directory
+                //If path is not given,Starting db in current working directory
                 console.log('\n---Instantiating DB instance in Default Path---\n')
                 path = process.cwd()
             }
@@ -72,15 +67,35 @@ export class db {
             }
         });
     }
+
+    /**
+     * @description Create new value in DB
+     * @param {string} key Key of Data
+     * @param {object} value value of Data
+     * @returns {Promise} Resolve on Successful Creation. Reject on any errror.
+     */
     async create(key, value) {
         return new Promise(async (resolved, rejected) => {
             const rejectReason = []
             console.log(key, 'Inserting\n')
+            //Checking for DB size limit -- max(1GB)
             if (Buffer.byteLength(JSON.stringify(this.data)) / 1024 > 1024) {
                 rejectReason.push(`Datastore size limit exceding 1GB. Cannot create.`)
                 rejected(rejectReason)
                 return
             }
+            /* 
+                ----Reqired Validation----
+                Key:
+                    1.Not null
+                    2.Type of String
+                    3.Min of 1 char and Max of 32 char
+                    4.Key should be Unique
+                value:
+                    1.Not null or Empty
+                    2.Type of Object
+                    3.Max size of 16KB.
+            */
             if (key == null) {
                 rejectReason.push('Key should not be null')
             }
@@ -108,6 +123,7 @@ export class db {
                 return
             } else {
                 this.data[key] = value;
+                //Writing into DB
                 fs.writeFileSync(this.dbPath, JSON.stringify(this.data), function (err) {
                     if (err) {
                         console.log(err)
@@ -125,6 +141,7 @@ export class db {
     async read(key) {
         return new Promise((resolved, rejected) => {
             console.log(key, 'Reading\n')
+            //Checking key exists in DB
             if (!Object.keys(this.data).includes(key)) {
                 console.log('Key does not exists')
                 rejected(false)
@@ -136,6 +153,7 @@ export class db {
     }
     async delete(key) {
         return new Promise(async (resolved, rejected) => {
+            //Checking key exists in DB
             if (!Object.keys(this.data).includes(key)) {
                 console.log('Key does not exists')
                 rejected('Key does not exists')
@@ -143,6 +161,7 @@ export class db {
                 console.log(key, 'Deleting\n')
                 delete this.data[key]
                 const deletePromise = new Promise(async (resolve, reject) => {
+                    //Wring into DB
                     await fs.writeFileSync(this.dbPath, JSON.stringify(this.data), function (err) {
                         if (err) {
                             console.log(err)
