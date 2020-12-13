@@ -7,8 +7,6 @@ Build a file-based key-value data store that supports the basic CRD (create, rea
 ## Video Demo:
 **Click the link below for Video Demo.**
 **https://www.loom.com/share/0c46b38694944f5ba2ec5baddce24454**
-
-![](https://github.com/akpmohan07/object-db/blob/main/Readme%20Files/demo-gif.gif?raw=)
 ## Environment Requirements
 
     node  14.15.1 
