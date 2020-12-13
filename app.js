@@ -4,7 +4,6 @@ let dataStore = new db()
 const startPromise = new Promise(async(resolve,reject)=>{
    await dataStore.start(process.argv[2])
    .then((resp) => {
-       console.log(resp, 'ressp--->')
        resolve(true)
    })
    .catch((error)=>{
@@ -13,24 +12,28 @@ const startPromise = new Promise(async(resolve,reject)=>{
    })
 });
 
+let sample_create = {
+    "1" : {name: 'A'},
+    "2" : {name: ',B'},
+    "3" : {name: 'C'},
+    "4" : {name: 'D'},
+}
+let sample_read = ['1','2','3','4','5']
+
+let sample_delete = ['1','2','5']
 startPromise.then(async (res)=>{
-    await dataStore.create('asf',{"af":{'dfsdf':56}}).then((res)=>{console.log(res)}).catch((error)=>console.log(error))
-    await dataStore.create('asff',{"af":{'dfsdf':76}}).then((res)=>{console.log(res)}).catch((error)=>console.log(error))
-    await dataStore.create('mohan',{"af":{'dfsdf':76}}).then((res)=>{console.log(res)}).catch((error)=>console.log(error))
-    await dataStore.read('mohan').then((res)=>{console.log(res)}).catch((error)=>console.log(error))
-    await dataStore.delete('mohan').then((res)=>{console.log(res)}).catch((error)=>console.log(error))
-    await dataStore.read('mohan').then((res)=>{console.log(res)}).catch((error)=>console.log(error))
+
+    for(let each in sample_create){
+         dataStore.create(each,sample_create[each]).then((res)=>{console.log(res)}).catch((error)=>{})
+    }
+    for(let each in sample_read){
+   dataStore.read(sample_read[each]).then((res)=>{}).catch((error)=>{})
+    }
+    for(let each in sample_delete){
+        dataStore.delete(sample_delete[each]).then((res)=>{}).catch((error)=>{})
+    }
+    for(let each in sample_read){
+        dataStore.read(sample_read[each]).then((res)=>{}).catch((error)=>{})
+         }
+
 })
-// dataStore.start(process.argv[2])
-//    .then((resp) => {
-//        dataStore.create('asf',{"af":{'dfsdf':56}})
-//        .then((res)=>{
-//         console.log(res)
-//        })
-//        .catch((error)=>{
-//            console.log(error)
-//        })
-//    })
-//    .catch((error)=>{
-//        console.log(error)
-//    })
