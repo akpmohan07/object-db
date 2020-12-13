@@ -53,7 +53,7 @@ startPromise.then(async (res) => {
     for (let each in sample_delete) {
         dataStore.delete(sample_delete[each]).then((res) => {}).catch((error) => {})
     }
-    //Reading after deleting some Values
+    //Reading after deleting some Value
     for (let each in sample_read) {
         dataStore.read(sample_read[each]).then((res) => {}).catch((error) => {})
     }

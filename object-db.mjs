@@ -45,7 +45,7 @@ export class db {
                         this.dbPath = path + '/db.json'
 
                     } else {
-                        //If existing DB is detected Reading it.
+                        //If existing DB is detected Reading it
                         await fs.readFile(path + '/db.json', 'utf8', (error, fileData) => {
                             if (error) {
                                 rejected(error);
