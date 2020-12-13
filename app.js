@@ -43,7 +43,6 @@ startPromise.then(async (res) => {
     //Create operation
     for (let each in sample_create) {
         dataStore.create(each, sample_create[each]).then((res) => {
-            console.log(res)
         }).catch((error) => {})
     }
     //Reading after inserting
