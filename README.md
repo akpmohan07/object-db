@@ -1,8 +1,14 @@
 # About
 This Project was one of the Interview Round by [Freshworks](https://www.freshworks.com/).
 Project Time - ***`72 hours`***
+ 
 ## Problem Statement
 Build a file-based key-value data store that supports the basic CRD (create, read, and delete) operations. This data store is meant to be used as local storage for one single process on one laptop. The datastore must be exposed as a library to clients that can instantiate a class and work with the data store. [Details](https://github.com/akpmohan07/object-db/blob/main/Readme%20Files/Engg%20-%20assignment.pdf)
+## Video Demo:
+**Click the link below for Video Demo.**
+**https://www.loom.com/share/0c46b38694944f5ba2ec5baddce24454**
+
+![](https://github.com/akpmohan07/object-db/blob/main/Readme%20Files/demo-gif.gif?raw=)
 ## Environment Requirements
 
     node  14.15.1 
@@ -79,7 +85,7 @@ First, check node version.
 
    
 ## Upcoming Features:
- - [ ] Every key supports setting a Time-To-Live property when it is created. This property is optional. If provided, it will be evaluated as an integer defining the number of seconds the key must be retained in the data store. Once the Time-To-Live for a key has expired, the key will no longer be available for Read or Delete operations
+ - [ ] Every key supports setting a Time-To-Live property when it is created. This property is optional. If provided, it will be evaluated as an integer defining the number of seconds the key must be retained in the data store. Once the Time-To-Live for a key has expired, the key will no longer be available for or Delete operations
  - [ ] The client will bear as little memory costs as possible to use this data store while deriving maximum performance with respect to response times for accessing the data store.
  
 ## Technology Stack
