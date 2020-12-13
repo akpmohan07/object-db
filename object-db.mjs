@@ -27,7 +27,7 @@ export class db {
 
                 }
                 console.log('---Checking for previous DB---\n')
-                
+
                 try {
                     //Checking if Existing DB is present in Given Path
                     if (!fs.existsSync(path + '/db.json')) {
@@ -68,7 +68,7 @@ export class db {
             }
         });
 
-       
+
     }
 
     /**
@@ -152,7 +152,7 @@ export class db {
     async read(key) {
         return new Promise((resolved, rejected) => {
             console.log('------Reading--------')
-            console.log('Key-',key)
+            console.log('Key-', key)
             //Checking key exists in DB
             if (!Object.keys(this.data).includes(key)) {
                 console.log('Key does not exists')
@@ -172,7 +172,7 @@ export class db {
      */
     async delete(key) {
         console.log('------Deleting--------')
-        console.log('Key-',key)
+        console.log('Key-', key)
         return new Promise(async (resolved, rejected) => {
             //Checking key exists in DB
             if (!Object.keys(this.data).includes(key)) {
@@ -199,7 +199,7 @@ export class db {
                     .catch((error) => {
                         rejected(error)
                     })
-                    console.log('Deleted\n---------------------\n')
+                console.log('Deleted\n---------------------\n')
             }
         });
     }

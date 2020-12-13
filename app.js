@@ -1,4 +1,6 @@
-import {db} from './object-db.mjs';
+import {
+    db
+} from './object-db.mjs';
 
 
 //Creating DB instance
@@ -42,8 +44,7 @@ startPromise.then(async (res) => {
 
     //Create operation
     for (let each in sample_create) {
-        dataStore.create(each, sample_create[each]).then((res) => {
-        }).catch((error) => {})
+        dataStore.create(each, sample_create[each]).then((res) => {}).catch((error) => {})
     }
     //Reading after inserting
     for (let each in sample_read) {
