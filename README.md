@@ -2,7 +2,7 @@
 This Project was one of the Interview Round by [Freshworks](https://www.freshworks.com/).
 Project Time - ***`72 hours`***
 ## Problem Statement
-Build a file-based key-value data store that supports the basic CRD (create, read, and delete) operations. This data store is meant to be used as a local storage for one single process on one laptop. The data store must be exposed as a library to clients that can instantiate a class and work with the data store. [Details](https://github.com/akpmohan07/object-db/blob/main/Readme%20Files/Engg%20-%20assignment.pdf)
+Build a file-based key-value data store that supports the basic CRD (create, read, and delete) operations. This data store is meant to be used as local storage for one single process on one laptop. The datastore must be exposed as a library to clients that can instantiate a class and work with the data store. [Details](https://github.com/akpmohan07/object-db/blob/main/Readme%20Files/Engg%20-%20assignment.pdf)
 ## Environment Requirements
 
     node  14.15.1 
@@ -13,7 +13,7 @@ https://nodejs.org/download/release/v14.15.1/
 https://nodejs.org/dist/v14.15.1/docs/api/
 
 ## How to run?
-First check node version.
+First, check node version.
 
     node -v
     v14.15.1
@@ -37,11 +37,11 @@ First check node version.
 
 ## Solution
 
- - Console Application to do CRD operation, Satisfying the funcational and Non-Functional requirements.
+ - Console Application to do CRD operation, Satisfying the functional and Non-Functional requirements.
  
- - I chose **Node.js** for development, because I am currently learing it.
+ - I chose **Node.js** for development because I am currently learning it.
  
- - App will store datas in **JSON** file.I chose the JSON as storing format because it is easy to  access Key-Value Datas.
+ - App will store data in **JSON** file. I chose the JSON as storing format because it is easy to access Key-Value Data.
 
 ## Application Flow
 ![flow](https://raw.githubusercontent.com/akpmohan07/object-db/main/Readme%20Files/flow_chart.png?raw=)
@@ -65,7 +65,7 @@ First check node version.
  - [x] If Create is invoked for an existing key, an appropriate error
        must be returned
  - [x] A Read operation on a key can be performed by providing the key,
-       and receiving the value in response, as a JSON object.
+       and receive the value in the response, as a JSON object.
  - [x] A Delete operation can be performed by providing the key.
  - [x] Appropriate error responses must always be returned to a client
        if it uses the data store in unexpected ways or breaches any
@@ -75,7 +75,7 @@ First check node version.
    
 ## Upcoming Features:
  - [ ] Every key supports setting a Time-To-Live property when it is created. This property is optional. If provided, it will be evaluated as an integer defining the number of seconds the key must be retained in the data store. Once the Time-To-Live for a key has expired, the key will no longer be available for Read or Delete operations
- - [ ] The client will bear as little memory costs as possible to use this data store, while deriving maximum performance with respect to response times for accessing the data store.
+ - [ ] The client will bear as little memory costs as possible to use this data store while deriving maximum performance with respect to response times for accessing the data store.
  
 ## Technology Stack
  -  Node.js
